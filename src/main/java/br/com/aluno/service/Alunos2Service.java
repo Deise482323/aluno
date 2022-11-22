@@ -13,4 +13,12 @@ public class Alunos2Service {
     public void salvar(Alunos alunos) {
         repository.salvar(alunos);
     }
+
+    public void update(String nomeAluno, Long id) {
+        repository.update(nomeAluno, id);
+    }
+
+    public void delete(Long id) {
+        repository.delete(id);
+    }
 }

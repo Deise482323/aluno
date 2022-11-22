@@ -13,9 +13,29 @@ public class Alunos2Repositoryimpl {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
+    public static Alunos findById(long id) {
+        return null;
+    }
+
     public void salvar(Alunos alunos) {
         //escrever a query
         String sql = "INSERT INTO tb_alunos(nome_aluno, numero_matricula) VALUES ( '" + alunos.getNomeAluno() + "'," + alunos.getNumeroMatricula() + ");";
+        System.out.println(sql);
+        Map<String, Object> params = new HashMap<>();
+        //executar a query
+        jdbcTemplate.update(sql, params);
+    }
+
+    public void update(String nomeAluno, Long id) {
+        String sql = "UPDATE tb_alunos SET nome_aluno = '" + nomeAluno + "'  WHERE id = " + id + ";";
+        System.out.println(sql);
+        Map<String, Object> params = new HashMap<>();
+        //executar a query
+        jdbcTemplate.update(sql, params);
+    }
+
+    public void delete(Long id) {
+        String sql = "DELETE FROM tb_alunos WHERE id = " + id + ";";
         System.out.println(sql);
         Map<String, Object> params = new HashMap<>();
         //executar a query

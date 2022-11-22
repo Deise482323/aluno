@@ -24,4 +24,20 @@ public class AlunosV2Controller {
     public void Salvar(@RequestBody Alunos alunos) {
         service.salvar((alunos));
     }
+
+    @PutMapping("/{id}/{nomeAluno}")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(
+            @PathVariable("id") long id,
+            @PathVariable("nomeAluno") String nomeAluno) {
+        service.update(nomeAluno, id);
+    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(
+            @PathVariable("id") long id) {
+        service.delete(id);
+    }
+
 }
