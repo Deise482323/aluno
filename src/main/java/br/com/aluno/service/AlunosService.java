@@ -1,6 +1,6 @@
 package br.com.aluno.service;
 
-import br.com.aluno.entity.Alunos;
+import br.com.aluno.entity.Aluno;
 import br.com.aluno.exeption.AlunoNaoEncontradoException;
 import br.com.aluno.http.domain.response.AlunosResponse;
 import br.com.aluno.repository.AlunosRepository;
@@ -17,15 +17,15 @@ public class AlunosService {
     @Autowired
     private AlunosRepository repository;
 
-    public void salvar(Alunos alunos) {
-        repository.save(alunos);
+    public void salvar(Aluno aluno) {
+        repository.save(aluno);
     }
 
     public List<AlunosResponse> findAll() {
-        List<Alunos> entity = repository.findAll();
+        List<Aluno> entity = repository.findAll();
         List<AlunosResponse> response = new ArrayList<>();
 
-        for (Alunos e : entity) {
+        for (Aluno e : entity) {
             AlunosResponse aluno = new AlunosResponse();
             aluno.setNomeAluno(e.getNomeAluno());
             aluno.setNumeroMatricula(e.getNumeroMatricula());
@@ -34,9 +34,9 @@ public class AlunosService {
     }
 
     public AlunosResponse findById(Long id) {
-        Optional<Alunos> entity = repository.findById(id);
+        Optional<Aluno> entity = repository.findById(id);
         if (entity.isPresent()) {
-            Alunos e = entity.get();
+            Aluno e = entity.get();
             AlunosResponse aluno = new AlunosResponse();
             aluno.setNomeAluno(e.getNomeAluno());
             aluno.setNumeroMatricula(e.getNumeroMatricula());
@@ -50,14 +50,14 @@ public class AlunosService {
         repository.deleteById(id);
     }
 
-    public void atualizar(Long id, Alunos alunos) {
-        Optional<Alunos> res = repository.findById(id);
+    public void atualizar(Long id, Aluno alunos) {
+        Optional<Aluno> res = repository.findById(id);
         if (res.isPresent()) {
-            Alunos AlunosDb = res.get();
-            AlunosDb.setNomeAluno(alunos.getNomeAluno());
-            AlunosDb.setNumeroMatricula(alunos.getNumeroMatricula());
+            Aluno alunoDb = res.get();
+            alunoDb.setNomeAluno(alunos.getNomeAluno());
+            alunoDb.setNumeroMatricula(alunos.getNumeroMatricula());
 
-            repository.save(AlunosDb);
+            repository.save(alunoDb);
         } else {
             throw new AlunoNaoEncontradoException();
         }

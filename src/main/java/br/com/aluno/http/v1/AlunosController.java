@@ -1,6 +1,6 @@
 package br.com.aluno.http.v1;
 
-import br.com.aluno.entity.Alunos;
+import br.com.aluno.entity.Aluno;
 import br.com.aluno.http.domain.response.AlunosResponse;
 import br.com.aluno.service.AlunosService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +21,8 @@ public class AlunosController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void salvar(@RequestBody Alunos alunos) {
-        service.salvar(alunos);
+    public void salvar(@RequestBody Aluno aluno) {
+        service.salvar(aluno);
     }
 
     @GetMapping
@@ -45,7 +45,7 @@ public class AlunosController {
 
     @PutMapping("/update-por-id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void atualizar(@RequestParam("id") Long id, @RequestBody Alunos alunos) {
-        service.atualizar(id, alunos);
+    public void atualizar(@RequestParam("id") Long id, @RequestBody Aluno aluno) {
+        service.atualizar(id, aluno);
     }
 }
