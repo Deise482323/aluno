@@ -41,4 +41,11 @@ public class Alunos2Repositoryimpl {
         //executar a query
         jdbcTemplate.update(sql, params);
     }
+
+    public void select(Alunos alunos,Long id){
+        String sql = "SELECT COUNT(*) FROM tb_alunos WHERE id = " + id + ";";
+        System.out.println(sql);
+        //executar a query
+        jdbcTemplate.queryForObject(sql, Integer.class);
+    }
 }

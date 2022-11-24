@@ -21,4 +21,8 @@ public class Alunos2Service {
     public void delete(Long id) {
         repository.delete(id);
     }
+
+    public void select(Alunos alunos,Long id) {
+        repository.select(alunos,id);
+    }
 }

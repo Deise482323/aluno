@@ -40,4 +40,9 @@ public class AlunosV2Controller {
         service.delete(id);
     }
 
+    @GetMapping("/{nomeAluno}/{numeroMatricula}")
+    @ResponseStatus(HttpStatus.OK)
+    public void select(Alunos alunos,Long id) {
+        service.select(alunos,id);
+    }
 }
